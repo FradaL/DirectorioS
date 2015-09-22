@@ -25,20 +25,19 @@ Route::post('registro', 'Auth\AuthController@postRegister');
 
 
 
+// Route of Files
 Route::get('files', ['as' => 'listado.file', 'uses' => 'FilesController@index']);
-
 Route::get('files/new', ['as' => 'new.file', 'uses' => 'FilesController@create'] );
-
 Route::post('files/create', ['as' => 'create.file', 'uses' => 'FilesController@store'] );
-
 Route::put('files/update/{id}', ['as' => 'update.file', 'uses' => 'FilesController@update'] );
-
 Route::get('files/edit/{id}', ['as' => 'edit.file', 'uses' => 'FilesController@edit'] );
-
-
-
 Route::delete('files/delete/{id}', ['as' => 'delete.file', 'uses' => 'FilesController@destroy'] );
 
+//Route of Bags
+Route::get('files/bag/new', ['as' => 'new.bag', 'uses' => 'BagController@create']);
+Route::post('files/bag/create', ['as' => 'create.bag', 'uses' => 'BagController@store']);
 
-
+//Route of Lockers
+Route::get('files/locker/new', ['as' => 'new.locker', 'uses' => 'LockerController@create']);
+Route::post('files/locker/create', ['as' => 'create.locker', 'uses' => 'LockerController@store']);
 

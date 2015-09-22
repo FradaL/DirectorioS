@@ -42,7 +42,7 @@ class FilesController extends Controller
     {
         $town = Municipalitie::get()->pluck('town', 'id');
         $year = Year::get()->pluck('year', 'id');
-        $bag = Bag::get()->pluck('bag', 'id');
+        $bag = Bag::orderBy('Bag', 'ASC')->get()->pluck('bag', 'id');
         $locker = Locker::get()->pluck('locker', 'id');
         return view('Files/create', compact('town', 'year', 'bag', 'locker'));
     }
@@ -50,9 +50,7 @@ class FilesController extends Controller
 
     public function store(Request $request)
     {
-        
-        
-
+               
         $data = $request->all();
 
         $data['user'] = \Auth::User()->id;

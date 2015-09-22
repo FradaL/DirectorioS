@@ -10,6 +10,9 @@ class Bag extends Model
 
     protected $table = 'bags';
 
+    protected $fillable = ['bag'];
+
+
 
     public function file()
     {
