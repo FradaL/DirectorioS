@@ -7,6 +7,7 @@ use Session;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateBagRequest;
 
 use App\ModelsFiles\Bag;
 
@@ -34,28 +35,11 @@ class BagController extends Controller
 		return view('Files.bag.create');
 	}
 
-	public function store(Request $request)
+	public function store(CreateBagRequest $request)
 	{
-		//
-
+		
 		$data = $request->all();
-
 		$data['user'] = \Auth::User()->id;
-	  
-	  
-		$rules = array(
-			'bag' => 'required'            
-		);
-
-		$validar = \Validator::make($data, $rules);
-
-		if ($validar->fails())
-		{
-			return redirect()->back()
-				->withErrors($validar->errors())
-				->withInput($request->all());
-		}
-
 		$bag = Bag::create($data);
 		$bag->save();
 

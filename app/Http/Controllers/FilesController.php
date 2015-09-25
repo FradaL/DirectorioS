@@ -7,6 +7,7 @@ use Session;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateFileRequest;
 
 #Models
 use App\ModelsFiles\Municipalitie;
@@ -48,35 +49,13 @@ class FilesController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(CreateFileRequest $request)
     {
-               
+        
         $data = $request->all();
-
         $data['user'] = \Auth::User()->id;
-      
-      
-        $rules = array(
-            'snip' => 'required',
-            'town' => 'required',
-            'year' => 'required',
-            'numberbag' => 'required',
-            'locker' => 'required',
-            'user' => 'required'
-        );
-
-        $validar = \Validator::make($data, $rules);
-
-        if ($validar->fails())
-        {
-            return redirect()->back()
-                ->withErrors($validar->errors())
-                ->withInput($request->all());
-        }
-
         $file = File::create($data);
-        $file->save();
-
+        $file = 
         Session::flash('status', '¡ Snip:  ' .  $file->snip  .' Guardado con éxito!');
 
         return redirect()->route('new.file');
@@ -103,7 +82,7 @@ class FilesController extends Controller
     public function update(Request $request, $id)
     {
          $file = File::findOrFail($id);
-         $request->user = 1;
+         $file->user = \Auth::user()->id;
          $file->fill($request->all());
          $file->save();
 

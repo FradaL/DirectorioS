@@ -11,7 +11,7 @@ class File extends Model
 
     protected $fillable = ['snip', 'town', 'year', 'numberbag', 'locker','user'];
 
-   
+  
 
     public function bags()
     {
@@ -41,10 +41,4 @@ class File extends Model
          }       
     }
 
-    public function setUserAttribute($value)
-    {
-
-        return $this->attributes['user'] = \Auth::user()->id;
-
-    }
 }

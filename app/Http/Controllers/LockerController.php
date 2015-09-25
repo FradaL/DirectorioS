@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateLockerRequest;
 
 use Session;
 use App\ModelsFiles\Locker;
@@ -39,27 +40,11 @@ class LockerController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateLockerRequest $request)
     {
         //
         $data = $request->all();
-
         $data['user'] = \Auth::User()->id;
-      
-      
-        $rules = array(
-            'locker' => 'required'            
-        );
-
-        $validar = \Validator::make($data, $rules);
-
-        if ($validar->fails())
-        {
-            return redirect()->back()
-                ->withErrors($validar->errors())
-                ->withInput($request->all());
-        }
-
         $locker = Locker::create($data);
         $locker->save();
 
