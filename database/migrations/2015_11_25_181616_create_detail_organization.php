@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePivotOrganizationAndDirectory extends Migration
+class CreateDetailOrganization extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,25 @@ class CreatePivotOrganizationAndDirectory extends Migration
     public function up()
     {
         //
-            Schema::create('directories_organizations', function (Blueprint $table) {
-            $table->integer('directory_id')->unsigned();
+            Schema::create('details_organization_groups', function (Blueprint $table) {
+            $table->increments('id')->unique();
             $table->integer('organization_id')->unsigned();
+            $table->integer('group_id')->unsigned();
+            $table->timestamps();
 
-
-            $table->foreign('directory_id')->references('id')->on('directories');
             $table->foreign('organization_id')->references('id')->on('organizations');
+            $table->foreign('group_id')->references('id')->on('groups');
         });
+
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
         //
-        Schema::drop('directories_organizations');
     }
 }
-

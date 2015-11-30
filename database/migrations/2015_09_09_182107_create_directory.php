@@ -30,8 +30,10 @@ class CreateDirectory extends Migration
             $table->foreign('institution_id')->references('id')->on('institutions');
 
         });
+         
 
     }
+
     public function down()
     {
         //

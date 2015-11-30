@@ -109,8 +109,34 @@
             </li>
           </ul>
         </li>
-
         </li>
+
+        <li>
+            <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Directorio<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ asset('directory') }}">Ver Listado</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-submenu">
+                <a tabindex="-1" href="#">Instituciones</a>
+                <ul class="dropdown-menu">
+                  <li><a tabindex="-1" href="{{ asset('files/bag/new') }}">Agregar Institución</a></li>
+                </ul>
+            </li>
+            <li class="dropdown-submenu">
+                <a tabindex="-1" href="#">Grupos</a>
+                <ul class="dropdown-menu">
+                  <li><a tabindex="-1" href="{{ asset('files/locker/new') }}">Agregar Grupo</a></li>
+                </ul>
+            </li>
+          </ul>
+        </li>
+        </li>
+
+
+
+
+
 
     </ul>
   </div>

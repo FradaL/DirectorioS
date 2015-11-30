@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrganization extends Migration
+class CreateGroups extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,26 @@ class CreateOrganization extends Migration
     public function up()
     {
         //
-            Schema::create('organizations', function (Blueprint $table) {
+            Schema::create('groups', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('name');
+            $table->integer('organization_id')->unsigned();
             $table->timestamps();
+
+            
+            $table->foreign('organization_id')->references('id')->on('organizations');
         });
+
+
     }
 
-     
-
-
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
         //
-        Schema::drop('organizations');
     }
 }

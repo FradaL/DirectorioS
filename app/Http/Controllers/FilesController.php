@@ -25,6 +25,7 @@ class FilesController extends Controller
          $this->middleware('auth');
 
     }
+
     public function index(Request $request)
     {
        $lists = File::searchsnip($request->get('snip'))->orderBy('id', 'DESC')->paginate();
@@ -38,7 +39,6 @@ class FilesController extends Controller
        return view('Files/listado', compact('lists'));
     }
 
-
     public function create()
     {
         $town = Municipalitie::get()->pluck('town', 'id');
@@ -48,18 +48,15 @@ class FilesController extends Controller
         return view('Files/create', compact('town', 'year', 'bag', 'locker'));
     }
 
-
     public function store(CreateFileRequest $request)
     {
-        
         $data = $request->all();
         $data['user'] = \Auth::User()->id;
         $file = File::create($data);
-        $file = 
+        
         Session::flash('status', '¡ Snip:  ' .  $file->snip  .' Guardado con éxito!');
 
-        return redirect()->route('new.file');
-    
+        return redirect()->route('new.file');  
     }
 
     public function show($id)
