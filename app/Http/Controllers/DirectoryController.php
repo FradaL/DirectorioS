@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Models\Institution;
+use App\Models\Organization;
+use App\Models\Directory;
 
 class DirectoryController extends Controller
 {
@@ -19,7 +21,9 @@ class DirectoryController extends Controller
     {
         //
 
-         return view('directory.directory');
+         $directory = Directory::all();
+         return view('directory.directory', compact('directory'));
+
     }
 
     /**
@@ -30,7 +34,9 @@ class DirectoryController extends Controller
     public function create()
     {
         //
-        return view('directory.partials.create');
+        $Institution = Institution::get()->pluck('name', 'id');
+        $Organization = Organization::get()->pluck('name', 'id');
+        return view('directory.partials.create', compact('Institution', 'Organization'));
     }
 
     /**
@@ -39,9 +45,17 @@ class DirectoryController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(DirectoryRequest $request)
     {
         //
+      $result=$request->all();
+      $data = Directory::create($result);
+
+      Session::flash('status', 'Guardado con éxito!');
+
+      return redirect()->route('view.directory'); 
+
+
     }
 
     /**

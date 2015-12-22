@@ -20,6 +20,7 @@ class CreateDirectory extends Migration
             $table->string('first_surname');
             $table->string('second_surname');
             $table->string('address');
+            $table->string('email');
             $table->integer('phone');
             $table->integer('cell_phone');
             $table->string('signature');

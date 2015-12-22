@@ -32,6 +32,11 @@
                                 {!! Form::label('CellPhone', 'Móvil') !!}
                                 {!! Form::text('cell_phone', null, ['class' => 'form-control']) !!} 
                               </div>
+
+                              <div class="form-group">
+                                {!! Form::label('email', 'Correo Electronico') !!}
+                                {!! Form::text('email', null, ['class' => 'form-control']) !!} 
+                              </div>
                               
                               <div class="form-group">
                                 {!! Form::label('signature', 'Firma') !!}
@@ -41,12 +46,12 @@
 
                               <div class="form-group">
                                 {!! Form::label('institution', 'Institucion') !!}
-                                {!! Form::select('institution_id', array('L' => 'Large', 'S' => 'Small'), null, ['class' => 'form-control', 'placeholder' => 
+                                {!! Form::select('institution_id', $Institution, null, ['class' => 'form-control', 'placeholder' => 
                                     'Seleccione Institución'])!!} 
                               </div>
 
                               <div class="form-group">
                                 {!! Form::label('organization', 'organización') !!}
-                                {!! Form::select('organization_id', array('L' => 'Large', 'S' => 'Small'), null, 
+                                {!! Form::select('organization_id', $Organization, null, 
                                     ['class' => 'form-control', 'placeholder' => 'Seleccione Organización']) !!}
                               </div>

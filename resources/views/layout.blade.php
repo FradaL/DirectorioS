@@ -120,13 +120,13 @@
             <li class="dropdown-submenu">
                 <a tabindex="-1" href="#">Instituciones</a>
                 <ul class="dropdown-menu">
-                  <li><a tabindex="-1" href="{{ asset('files/bag/new') }}">Agregar Institución</a></li>
+                  <li><a tabindex="-1" href="{{ asset('institution') }}">Agregar Institución</a></li>
                 </ul>
             </li>
             <li class="dropdown-submenu">
                 <a tabindex="-1" href="#">Grupos</a>
                 <ul class="dropdown-menu">
-                  <li><a tabindex="-1" href="{{ asset('files/locker/new') }}">Agregar Grupo</a></li>
+                  <li><a tabindex="-1" href="{{ asset('organization') }}">Agregar Grupo</a></li>
                 </ul>
             </li>
           </ul>

@@ -6,24 +6,22 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Models\Organization;
+use App\Models\Institution;
 use Session;
-class OrganizationController extends Controller
+
+class InstitutionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-
-
     public function index()
     {
         //
-        $lists = Organization::all();
+        $lists = Institution::all();
 
-        return view('directory.organization.create', compact('lists'));
+        return view('directory.Institution.create', compact('lists'));
     }
 
     /**
@@ -46,11 +44,11 @@ class OrganizationController extends Controller
     {
         //
         $data = $request->all();
-        $crear = Organization::create($data);
+        $crear = Institution::create($data);
 
         Session::flash('status', '¡Registrado con éxito!');
 
-        return redirect()->route('view.organization');
+        return redirect()->route('view.institution');
     }
 
     /**
@@ -62,7 +60,7 @@ class OrganizationController extends Controller
     public function show($id)
     {
         //
-        
+
     }
 
     /**
@@ -74,9 +72,8 @@ class OrganizationController extends Controller
     public function edit($id)
     {
         //
-        $edit = Organization::findOrFail($id);
-        return view('directory.organization.edit', compact('edit'));
-
+        $edit = Institution::findOrFail($id);
+        return view('directory.Institution.edit', compact('edit'));
     }
 
     /**
@@ -89,16 +86,17 @@ class OrganizationController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $edit = Organization::findOrFail($id);
+        $edit = Institution::findOrFail($id);
         $edit->fill($request->all());
         $edit->save();
 
          Session::flash('status', '¡Actualizado con éxito!');
 
-         return redirect()->route('view.organization');
+         return redirect()->route('view.institution');
+    
     }
 
-    /**
+    /**|
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -107,9 +105,9 @@ class OrganizationController extends Controller
     public function destroy($id)
     {
         //
-            $org = Organization::findOrFail($id);
-            $org->delete();
+            $inst = Institution::findOrFail($id);
+            $inst->delete();
             Session::flash('status', '¡El Registro Fue eliminado!');
-            return redirect()->route('view.organization');
+            return redirect()->route('view.institution');
     }
 }

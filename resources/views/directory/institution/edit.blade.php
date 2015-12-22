@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-primary">
-                    <div class="panel-heading"> Grupos </div>
+                    <div class="panel-heading">Editar Institución</div>
                     <div class="panel-body">
 
                       
@@ -17,34 +17,23 @@
                               @endforeach
                             </ul>
                         </div>
-                      @endif  
+                      @endif
+                        
 
-                     {!! Form::open(['route' => 'create.organization', 'method' => 'POST']) !!}
+                     {!! Form::model($edit, ['route' => ['update.institution', $edit->id], 'method' => 'PUT']) !!}
+                              
+                              @include('directory.institution.fields')
 
-                              @include('directory.organization.fields')
-
-                              <button type="submit" class="btn btn-primary">Inscribir</button>
-                            
+                              <button type="submit" class="btn btn-default">Actualizar</button>
+                                                          
                      {!! Form::close() !!}
-                     <br>
 
-                        @if (Session::has('status'))
+                    </div>
+                      @if (Session::has('status'))
                         <div class="alert alert-success" role="alert">
                           <p> {{ Session::get('status')}}</p>
                         </div> 
                         @endif
-                    <br>
-                    <div>
-                      @include('directory.organization.table')
-                    </div>
-
-                    </div>
-                      
-
-
-
-
-                      
                 </div>
             </div>
         </div>

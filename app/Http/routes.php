@@ -49,4 +49,13 @@ Route::post('directory/create', ['as' => 'create.register', 'uses' => 'Directory
 //Route of organization
 Route::get('organization', ['as' => 'view.organization', 'uses' => 'OrganizationController@index']);
 Route::post('organization/create', ['as' => 'create.organization', 'uses' => 'OrganizationController@store']);
+Route::get('organization/edit/{id}', ['as' => 'edit.organization', 'uses' => 'OrganizationController@edit']);
+Route::put('organization/update/{id}', ['as' => 'update.organization', 'uses' => 'OrganizationController@update']);
+Route::delete('organization/delete/{id}', ['as' => 'delete.organization', 'uses' => 'OrganizationController@destroy'] );
 
+//Route of institution
+Route::get('institution', ['as' => 'view.institution', 'uses' => 'InstitutionController@index']);
+Route::post('institution/create', ['as' => 'create.institution', 'uses' => 'InstitutionController@store']);
+Route::get('institution/edit/{id}', ['as' => 'edit.institution', 'uses' => 'InstitutionController@edit']);
+Route::put('institution/update/{id}', ['as' => 'update.institution', 'uses' => 'InstitutionController@update']);
+Route::delete('institution/delete/{id}', ['as' => 'delete.institution', 'uses' => 'InstitutionController@destroy'] );
