@@ -39,12 +39,6 @@ class DirectoryController extends Controller
         return view('directory.partials.create', compact('Institution', 'Organization'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
     public function store(DirectoryRequest $request)
     {
         //
