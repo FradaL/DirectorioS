@@ -45,7 +45,7 @@ class DirectoryController extends Controller
       $result=$request->all();
       $data = Directory::create($result);
 
-      Session::flash('status', 'Guardado con éxito!');
+      Session::flash('status', '¡Guardado con éxito!');
 
       return redirect()->route('view.directory'); 
 
